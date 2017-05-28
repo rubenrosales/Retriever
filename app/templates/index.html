@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+  <style>
+  .retrieved-images{
+    width: 200px;
+    height: 200px;
+  }
+  .comment-count{
+    display: block;
+  }
+  .img-thumbnail:hover {
+      width: 200px;
+      height: 200px;
+  }
+  .img-thumbnail:hover .retrieved-images {
+      width: 150%;
+      height: 150%;
+      z-index: 99;
+      border-radius: 25px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translateZ(0) scale(1.20);
+      -moz-transform: scale(1.20);
+      -ms-transform: scale(1.20);
+      -o-transform: translatZ(0) scale(1.20);
+      transform: translatZ(0) scale(1.20);
+  }
+  </style>
+</head>
+
+<div class="container theme-showcase">
+
+  <ul class="photos">
+    {% for image in photos %}
+
+    <li class="comment-count"> <h2> # of Comments: {{ image }} </h2> </li>
+      {% for item in photos[image] %}
+      <li class="img-thumbnail"><img class="retrieved-images" src = {{item}}></img></li>
+       {% endfor %}
+
+    {% endfor %}
+  </ul>
+</div>
+</html>
